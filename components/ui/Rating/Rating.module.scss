@@ -1,0 +1,21 @@
+.filled {
+	svg {
+		fill: var(--primary);
+	}
+}
+
+.star {
+	display: inline-block;
+
+	svg {
+		display: inline-block;
+	}
+
+	&:not(:last-child) {
+		padding-right: 5px;
+	}
+}
+
+.editable {
+	cursor: pointer;
+}

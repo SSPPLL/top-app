@@ -1,0 +1,39 @@
+.wrapper {
+	display: grid;
+	grid-template:
+		". header header ." auto ". sidebar body ." 1fr "footer footer footer footer" auto / auto 230px minmax(320px, 1200px) auto;
+	gap: 0 30px;
+	min-height: 100vh;
+
+	@media screen and (width <= 765px) {
+		grid-template-areas:
+			"header"
+			"body"
+			"footer";
+		grid-template-columns: minmax(320px, 1fr);
+	}
+}
+
+.header {
+	grid-area: header;
+
+	@media screen and (width >= 766px) {
+		display: none;
+	}
+}
+
+.sidebar {
+	grid-area: sidebar;
+
+	@media screen and (width <= 765px) {
+		display: none;
+	}
+}
+
+.body {
+	grid-area: body;
+}
+
+.footer {
+	grid-area: footer;
+}

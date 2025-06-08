@@ -1,0 +1,25 @@
+.footer {
+	display: grid;
+	grid-template-columns: 1fr auto auto;
+	gap: 10px 40px;
+
+	padding: 25px 30px;
+
+	font-size: 16px;
+	line-height: 120%;
+	color: var(--white);
+
+	background: var(--primary);
+
+	a {
+		transition: color .3s ease;
+
+		&:hover {
+			color: var(--grey-light);
+		}
+	}
+
+	@media screen and (width <= 765px) {
+		grid-template-columns: 1fr;
+	}
+}

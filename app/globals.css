@@ -1,10 +1,9 @@
-@import url("./reset.css");
-
 :root {
 	--white: #fff;
   --black: #171717;
 	--grey-light: #ebebeb;
 	--grey-light-hover: #bebebe;
+	--grey-dark: #787D85;
 	--primary: #7653FC;
 	--primary-hover: #5931f7;
 	--green: #1DC37E;

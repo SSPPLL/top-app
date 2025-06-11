@@ -2,9 +2,9 @@
 	&-title {
 		display: grid;
 		grid-template-columns: auto 1fr;
-		align-items: end;
-		justify-items: left;
 		gap: 20px;
+		place-items: end left;
+
 		margin-bottom: 25px;
 	}
 }
@@ -15,9 +15,9 @@
 }
 
 .seo {
+	margin-top: 50px;
 	font-size: 18px;
 	line-height: 160%;
-	margin-top: 50px;
 
 	*:first-child {
 		margin-top: 0;
@@ -30,9 +30,9 @@
 	h1,
 	h2,
 	h3 {
-		line-height: 120%;
-		margin-bottom: 27px;
 		margin-top: 50px;
+		margin-bottom: 27px;
+		line-height: 120%;
 	}
 
 	h1 {
@@ -53,30 +53,32 @@
 	p,
 	ul,
 	ol {
-		margin-bottom: 20px;
 		margin-top: 20px;
+		margin-bottom: 20px;
 	}
 
 	li {
 		position: relative;
 		z-index: 1;
-		padding-left: 20px;
 		margin-bottom: 10px;
-
-		&:last-child {
-			margin-bottom: 0;
-		}
+		padding-left: 20px;
 
 		&::before {
 			content: '';
+
 			position: absolute;
+			z-index: 1;
 			top: 10px;
 			left: 0;
+
 			width: 8px;
 			height: 8px;
-			border-radius: 100%;
 			border: 1px solid var(--black);
-			z-index: 1
+			border-radius: 100%
+		}
+
+		&:last-child {
+			margin-bottom: 0;
 		}
 	}
 }

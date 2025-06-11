@@ -2,7 +2,7 @@
 
 import { firstLevelMenu, getFirstCategoryId } from '@/helpers/helpers';
 import { usePathname } from 'next/navigation';
-import { ReactElement, useMemo } from 'react';
+import { FC, ReactElement, useMemo } from 'react';
 import { MenuSecondLevel } from './MenuSecondLevel';
 import Link from 'next/link';
 import { MenuFirstLevelProps } from './types';
@@ -10,11 +10,11 @@ import styles from './Menu.module.scss'
 import cn from 'classnames'
 import { MenuContext } from './context';
 
-export const MenuFirstLevel = ({
+export const MenuFirstLevel: FC<MenuFirstLevelProps> = ({
 	className,
 	menus,
 	...props
-}: MenuFirstLevelProps): ReactElement => {
+}): ReactElement => {
 	const pathname = usePathname();
 	const value = useMemo(() => {
 		const [, type, alias] = pathname.split('/');

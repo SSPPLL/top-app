@@ -1,21 +1,20 @@
 import { API } from '@/app/api'
-import { MenuItem } from '@/interfaces/menu.interface'
+import { ProductModel } from '@/interfaces/product.interface';
 
-export async function getMenu(firstCategory: number): Promise<MenuItem[] | null> {
-	const res = await fetch(API.topPage.find, {
+export async function getProducts(category: string, limit: number = 10): Promise<ProductModel[] | null> {
+	const res = await fetch(API.product.find, {
 		method: 'POST',
 		headers: new Headers({ 'Content-Type': 'application/json' }),
 		body: JSON.stringify({
-			firstCategory
+			category,
+			limit
 		}),
 		next: {
 			revalidate: 60
 		}
 	})
-
 	if (!res.ok) {
 		return null;
 	}
-
 	return res.json();
 }

@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import styles from './Menu.module.scss'
-import { ReactElement, useContext } from 'react'
+import { FC, ReactElement, useContext } from 'react'
 import cn from 'classnames'
 import { MenuThirdLevelProps } from './types'
 import { MenuContext } from './context'
 
-export const MenuThirdLevel = ({ pages, category, className }: MenuThirdLevelProps): ReactElement => {
+export const MenuThirdLevel: FC<MenuThirdLevelProps> = ({ pages, category, className }): ReactElement => {
 	const { pathname } = useContext(MenuContext);
 	return (
 		<div className={cn(styles['third-level'], className)}>

@@ -1,16 +1,17 @@
-import { ReactElement, useState, KeyboardEvent, useEffect } from 'react'
+'use client'
+import { ReactElement, useState, KeyboardEvent, useEffect, FC } from 'react'
 import { RatingProps } from './types'
 import styles from './Rating.module.scss'
 import cn from 'classnames'
 import StarIcon from './star.svg'
 
-export const Rating = ({
+export const Rating: FC<RatingProps> = ({
 	isEditable = false,
 	rating,
 	setRating,
 	className,
 	...props
-}: RatingProps): ReactElement => {
+}): ReactElement => {
 	const [currentRating, setCurrentRating] = useState<number>(rating);
 
 	useEffect(() => {

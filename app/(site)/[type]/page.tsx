@@ -1,6 +1,7 @@
 import { firstLevelMenu } from '@/helpers/helpers';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { ReactElement } from 'react';
 
 interface PageParams {
 	type: string
@@ -30,7 +31,7 @@ export const generateMetadata = async ({ params }: {
 	}
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<PageParams[]> {
 	const params: PageParams[] = [];
 
 	for (const m of firstLevelMenu) {
@@ -44,7 +45,7 @@ export async function generateStaticParams() {
 
 export default async function FirstCategoryPage({ params }: {
 	params: Promise<{ type: string }>
-}) {
+}): Promise<ReactElement> {
 	const awaitedParams = await params;
 	const firstCategoryItem = firstLevelMenu.find(item => item.route === awaitedParams.type);
 

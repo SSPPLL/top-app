@@ -1,14 +1,14 @@
-import { ReactElement } from 'react'
+import { FC, ReactElement } from 'react'
 import styles from './Paragraph.module.scss'
 import cn from 'classnames'
 import { ParagraphProps } from './types'
 
-export const Paragraph = ({
+export const Paragraph: FC<ParagraphProps> = ({
 	size = 'md',
 	children,
 	className,
 	...props
-}: ParagraphProps): ReactElement => {
+}): ReactElement => {
 	return (
 		<p {...props} className={cn(styles[size], className)}>
 			{children}

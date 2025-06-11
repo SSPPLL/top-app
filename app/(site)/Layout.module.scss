@@ -2,10 +2,10 @@
 	display: grid;
 	grid-template:
 		". header header ." auto ". sidebar body ." 1fr "footer footer footer footer" auto / auto 230px minmax(320px, 1200px) auto;
-	gap: 0 30px;
+	gap: 40px 30px;
 	min-height: 100vh;
 
-	@media screen and (width <= 765px) {
+	@media screen and (max-width: 900px) {
 		grid-template-areas:
 			"header"
 			"body"
@@ -17,7 +17,7 @@
 .header {
 	grid-area: header;
 
-	@media screen and (width >= 766px) {
+	@media screen and (min-width: 901px) {
 		display: none;
 	}
 }
@@ -25,13 +25,17 @@
 .sidebar {
 	grid-area: sidebar;
 
-	@media screen and (width <= 765px) {
-		display: none;
+	@media screen and (max-width: 900px) {
+		display: none !important;
 	}
 }
 
 .body {
 	grid-area: body;
+
+	@media screen and (max-width: 900px) {
+		padding: 0 20px;
+	}
 }
 
 .footer {

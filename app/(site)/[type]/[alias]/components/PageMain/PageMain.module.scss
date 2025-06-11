@@ -1,0 +1,7 @@
+.title {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: end;
+	justify-items: left;
+	gap: 20px;
+}

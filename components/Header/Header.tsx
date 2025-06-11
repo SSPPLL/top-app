@@ -1,12 +1,9 @@
-import { ReactElement } from 'react'
+import { FC, ReactElement } from 'react'
 import styles from './Header.module.scss'
 import cn from 'classnames'
 import { HeaderProps } from './types'
 
-export const Header = ({
-	className,
-	...props
-}: HeaderProps): ReactElement => {
+export const Header: FC<HeaderProps> = ({ className, ...props }): ReactElement => {
 	return (
 		<header {...props} className={cn(styles.header, className)}>
 

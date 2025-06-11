@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { FC, ReactElement } from 'react'
 import styles from './Sidebar.module.scss'
 import cn from 'classnames'
 import { SidebarProps } from './types'
@@ -6,10 +6,10 @@ import { Menu } from '../Menu/Menu'
 import Link from 'next/link'
 import Image from 'next/image'
 
-export const Sidebar = async ({
+export const Sidebar: FC<SidebarProps> = async ({
 	className,
 	...props
-}: SidebarProps): Promise<ReactElement> => {
+}): Promise<ReactElement> => {
 	return (
 		<aside {...props} className={cn(styles.sidebar, className)}>
 			<Link className={styles.logo} href="/">

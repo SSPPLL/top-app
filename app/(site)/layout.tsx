@@ -6,6 +6,7 @@ import styles from "./Layout.module.scss";
 import { Header } from '@/components/Header/Header';
 import { Sidebar } from '@/components/Sidebar/Sidebar';
 import { Footer } from '@/components/Footer/Footer';
+import { ReactElement } from 'react';
 
 const notoSansKr = Noto_Sans_KR({
 	variable: "--font-family",
@@ -22,7 +23,7 @@ export default async function RootLayout({
 	children
 }: Readonly<{
 	children: React.ReactNode;
-}>) {
+}>): Promise<ReactElement> {
 	return (
 		<html lang="ru">
 			<body className={`${notoSansKr.variable}`}>

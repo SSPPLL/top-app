@@ -1,11 +1,11 @@
-import { DetailedHTMLProps, HTMLAttributes, ReactElement } from 'react'
+import { DetailedHTMLProps, FC, HTMLAttributes, ReactElement } from 'react'
 import { MenuFirstLevel } from './MenuFirstLevel'
 import { firstLevelMenu } from '@/helpers/helpers';
 import { getMenu } from '@/api/menu';
 import { MenuItem } from '@/interfaces/menu.interface';
 
-export const Menu = async (
-	props: DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
+export const Menu: FC<DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>> = async (
+	props
 ): Promise<ReactElement> => {
 	const menuArray: MenuItem[][] = [];
 

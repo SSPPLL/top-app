@@ -1,5 +1,5 @@
 'use client'
-import { Fragment, ReactElement, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { ReactElement, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import styles from './Menu.module.scss'
 import cn from 'classnames';
 import { MenuThirdLevel } from './MenuThirdLevel';
@@ -46,14 +46,14 @@ export const MenuSecondLevel = ({ category, menu }: MenuSecondLevelProps): React
 		})}>
 			{menu.map((menuItem, index) => {
 				return (
-					<Fragment key={menuItem._id.secondCategory}>
+					<div key={menuItem._id.secondCategory}>
 						<div className={styles['second-level']} onClick={() => openSecondLevel(index)}>
 							{menuItem._id.secondCategory}
 						</div>
 						<MenuThirdLevel className={cn(styles['second-level-block'], {
 							[styles['second-level-block-opened']]: openedItems.includes(index) || secondLevelActiveId === index
 						})} pages={menuItem.pages} category={category} />
-					</Fragment>
+					</div>
 				)
 			})}
 		</div>

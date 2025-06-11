@@ -1,6 +1,7 @@
 import { getMenu } from '@/api/menu';
+import { ReactElement } from 'react';
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ alias: string }[]> {
 	const menu = await getMenu(0);
 
 	if (!menu) {
@@ -10,14 +11,13 @@ export async function generateStaticParams() {
 	return menu.flatMap(item => item.pages.map(page => ({ alias: page.alias })));
 }
 
-export default async function Home() {
+export default async function Home(): Promise<ReactElement> {
 	return (
 		<main>
 
 		</main>
 	)
 }
-
 
 // export default function Home(): JSX.Element {
 // 	const [counter, setCount] = useState(0);

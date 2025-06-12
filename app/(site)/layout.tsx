@@ -1,10 +1,12 @@
-import styles from "./Layout.module.scss";
 import "@/app/reset.scss";
 import "@/app/globals.scss";
+import { Header } from '@/components/Header/Header';
+import { Sidebar } from '@/components/Sidebar/Sidebar';
+import { Footer } from '@/components/Footer/Footer';
+import styles from "./Layout.module.scss";
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import { ReactElement } from 'react';
-import { Footer, Header, Sidebar } from '@/components';
 
 const notoSansKr = Noto_Sans_KR({
 	variable: "--font-family",

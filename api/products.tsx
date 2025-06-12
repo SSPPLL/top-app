@@ -1,4 +1,4 @@
-import { API } from '@/app/api'
+import { API } from '@/api/model'
 import { ProductModel } from '@/interfaces/product.interface';
 
 export async function getProducts(category: string, limit: number = 10): Promise<ProductModel[] | null> {

@@ -1,4 +1,4 @@
-import { API } from '@/app/api'
+import { API } from '@/api/model'
 import { TopPageModel } from '@/interfaces/page.interface'
 
 export async function getPage(alias: string): Promise<TopPageModel | null> {

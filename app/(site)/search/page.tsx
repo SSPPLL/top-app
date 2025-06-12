@@ -1,13 +1,18 @@
 import { Metadata } from 'next';
+import { Title } from '@/components';
 
 export const metadata: Metadata = {
 	title: "Поиск"
 };
 
-export default async function Search() {
+export default async function SearchPage({ searchParams }: {
+	searchParams: Promise<{ [key: string]: string | undefined }>
+}) {
+	const { q } = await searchParams;
+
 	return (
 		<div>
-			<h1>Поиск</h1>
+			<Title as='h1' size='xl'>Результаты поиска по запросу: {q}</Title>
 		</div>
 	)
 }

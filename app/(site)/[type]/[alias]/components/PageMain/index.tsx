@@ -4,7 +4,7 @@ import { PageMainProps } from './types'
 import { SortEnum } from '@/components/Sort/types'
 import { sortReducer } from './sort.reducer'
 import styles from './PageMain.module.scss'
-import { Sort, Tag, Title } from '@/components'
+import { Product, Sort, Tag, Title } from '@/components'
 
 export const PageMain: FC<PageMainProps> = ({ products, title }) => {
 	const [{ sort, products: sortedProducts }, dispatchSort] = useReducer(sortReducer, {
@@ -25,7 +25,7 @@ export const PageMain: FC<PageMainProps> = ({ products, title }) => {
 			</div>
 			<div>
 				{sortedProducts && sortedProducts.map(p => (
-					<div key={p._id}>{p.title}</div>
+					<Product key={p._id} product={p} />
 				))}
 			</div></>
 	)

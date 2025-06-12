@@ -4,8 +4,8 @@ import styles from './Search.module.scss'
 import cn from 'classnames'
 import { SearchProps } from './types'
 import SearchIcon from './search.svg'
-import { Input } from '../Input'
-import { Button } from '../Button'
+import { Input } from '../Input/Input'
+import { Button } from '../Button/Button'
 import { useRouter } from 'next/navigation'
 
 export const Search: FC<SearchProps> = ({

@@ -1,6 +1,6 @@
 :root {
 	--white: #fff;
-  --black: #3B434E;
+	--black: #3B434E;
 	--grey: #A4A4A4;
 	--grey-light: #ebebeb;
 	--grey-light-hover: #bebebe;
@@ -15,15 +15,15 @@
 }
 
 body {
-  font-family: var(--font-family);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: var(--foreground);
+	font-family: var(--font-family);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: var(--foreground);
 
-  background: var(--background);
+	background: var(--background);
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }

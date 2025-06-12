@@ -80,7 +80,6 @@ export default async function Page({ params }: {
 			</div>
 			{page.firstCategory === TopLevelCategory.Courses && page.hh && <HHData {...page.hh} />}
 			{page.advantages && page.advantages.length > 0 && <Advantages advantages={page.advantages} />}
-			{/* {page.seoText && <div className={styles.seo} dangerouslySetInnerHTML={{ __html: page.seoText }} />} */}
 			{page.seoText && <div className={styles.seo}>{parse(page.seoText)}</div>}
 			<Title as='h2' size='lg' className={styles['subtitle']}>Получаемые навыки</Title>
 			{page.tags && page.tags.map(t => <Tag key={t} color='primary'>{t}</Tag>)}

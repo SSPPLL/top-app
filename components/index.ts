@@ -15,3 +15,4 @@ export { Menu } from './Menu/Menu';
 export { Search } from './Search/Search';
 export { Sidebar } from './Sidebar/Sidebar';
 export { Product } from './Product/Product';
+export { Divider } from './Divider/Divider';

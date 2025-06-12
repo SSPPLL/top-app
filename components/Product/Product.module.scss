@@ -1,0 +1,355 @@
+.product {
+	display: grid;
+	grid-template-columns: [start] 70px [logoend] 30px [titlestart] calc(50% - 100px) [middle] 1fr [pricestart] auto [priceend] 40px [creditstart] auto [creditend] 40px [ratingstart] auto [end];
+	margin-bottom: 30px;
+	padding: 30px;
+
+	@media screen and (width <=1320px) {
+		grid-template-areas:
+			"logo . title title title title title"
+			"logo . tags  tags  tags  tags  tags"
+			"price price price . credit . rating"
+			"priceTitle priceTitle priceTitle . creditTitle . ratingTitle"
+			"hr hr hr hr hr hr hr"
+			"description description description description description description description"
+			"features features features features features features features"
+			"advBlock advBlock advBlock advBlock advBlock advBlock advBlock"
+			"hr2 hr2 hr2 hr2 hr2 hr2 hr2"
+			"actions actions actions actions actions actions actions"
+		;
+		grid-template-columns: 70px 30px auto 40px auto 40px 1fr;
+	}
+
+	@media screen and (width <=640px) {
+		grid-template-areas:
+			"logo . title"
+			"logo . tags"
+			"priceTitle priceTitle price"
+			"creditTitle creditTitle credit"
+			"ratingTitle ratingTitle rating"
+			"hr hr hr"
+			"description description description"
+			"features features features"
+			"advBlock advBlock advBlock"
+			"hr2 hr2 hr2"
+			"actions actions actions"
+		;
+		grid-template-columns: 70px 30px 1fr;
+	}
+
+	@media screen and (width <=480px) {
+		grid-template-areas:
+			"logo"
+			"title"
+			"tags"
+			"price"
+			"priceTitle"
+			"credit"
+			"creditTitle"
+			"rating"
+			"ratingTitle"
+			"hr"
+			"description"
+			"features"
+			"advBlock"
+			"hr2"
+			"actions"
+		;
+		grid-template-columns: 1fr;
+
+	}
+}
+
+.logo {
+	grid-column: start / logoend;
+	grid-row: 1 / span 2;
+
+	@media screen and (width <=1320px) {
+		grid-area: logo;
+		margin-bottom: 20px;
+	}
+}
+
+.title,
+.tags {
+	grid-column: titlestart / middle;
+}
+
+.price,
+.price-title {
+	grid-column: pricestart / priceend;
+}
+
+.credit,
+.credit-title {
+	grid-column: creditstart / creditend;
+}
+
+.rating,
+.rating-title {
+	grid-column: ratingstart / end;
+}
+
+.rating {
+	align-self: center;
+
+	@media screen and (width <=1320px) {
+		grid-area: rating;
+	}
+}
+
+.price {
+	white-space: nowrap;
+
+	@media screen and (width <=1320px) {
+		grid-area: price;
+	}
+
+	@media screen and (width <=640px) {
+		margin-bottom: 10px;
+	}
+
+	@media screen and (width <=480px) {
+		margin-bottom: 0;
+	}
+}
+
+.credit {
+	@media screen and (width <=1320px) {
+		grid-area: credit;
+	}
+
+	@media screen and (width <=640px) {
+		margin-bottom: 10px;
+	}
+
+	@media screen and (width <=480px) {
+		margin-bottom: 0;
+	}
+}
+
+.hr,
+.description,
+.actions {
+	grid-column: start / end;
+}
+
+.actions {
+	@media screen and (width <=1320px) {
+		grid-area: actions;
+	}
+
+	@media screen and (width <=480px) {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 10px;
+	}
+}
+
+.hr {
+	@media screen and (width <=1320px) {
+		grid-area: hr;
+	}
+}
+
+.hr2 {
+	@media screen and (width <=1320px) {
+		grid-area: hr2;
+	}
+}
+
+.features {
+	grid-column: start / middle;
+	align-items: flex-start;
+
+	@media screen and (width <=1320px) {
+		grid-area: features;
+		margin-bottom: 20px;
+	}
+}
+
+.image {
+	border-radius: 5px;
+}
+
+.title {
+	align-self: flex-end;
+
+	@media screen and (width <=1320px) {
+		grid-area: title;
+	}
+}
+
+.tags {
+	@media screen and (width <=1320px) {
+		grid-area: tags;
+		margin-bottom: 20px;
+	}
+}
+
+.category {
+	margin-top: 7px;
+}
+
+.price,
+.credit {
+	align-self: flex-end;
+	font-size: 20px;
+	line-height: 135%;
+}
+
+.month {
+	font-size: 14px;
+}
+
+.old-price {
+	margin-left: 5px;
+}
+
+.price-title,
+.credit-title,
+.rating-title {
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 135%;
+}
+
+.price-title {
+	@media screen and (width <=1320px) {
+		grid-area: priceTitle;
+	}
+
+	@media screen and (width <=480px) {
+		margin-bottom: 10px;
+	}
+}
+
+.credit-title {
+	@media screen and (width <=1320px) {
+		grid-area: creditTitle;
+	}
+
+	@media screen and (width <=480px) {
+		margin-bottom: 10px;
+	}
+}
+
+.rating-title {
+	@media screen and (width <=1320px) {
+		grid-area: ratingTitle;
+	}
+}
+
+.review-button {
+	margin-left: 20px;
+
+	@media screen and (width <=480px) {
+		margin-left: 0;
+	}
+}
+
+.description {
+	margin-bottom: 15px;
+
+	@media screen and (width <=1320px) {
+		grid-area: description;
+	}
+}
+
+.adv {
+	&-block {
+		display: grid;
+		grid-column: middle / end;
+		grid-gap: 20px;
+		grid-template-columns: 1fr;
+		align-items: flex-start;
+
+		@media screen and (width <=1320px) {
+			grid-area: advBlock;
+		}
+	}
+
+	&-title {
+		font-size: 16px;
+		font-weight: 700;
+		line-height: 135%;
+	}
+
+	&-text {
+		margin-top: 5px;
+		font-size: 16px;
+		line-height: 140%;
+	}
+}
+
+.advantages {
+	&::before {
+		background: var(--green);
+	}
+}
+
+.disadvantages {
+	&::before {
+		background: var(--orange);
+	}
+}
+
+.advantages,
+.disadvantages {
+	position: relative;
+	z-index: 1;
+	padding-left: 18px;
+
+	&::before {
+		content: '';
+
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+
+		width: 3px;
+		height: 100%;
+		border-radius: 6px;
+	}
+}
+
+.characteristics {
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: 1fr;
+	padding-right: 60px;
+
+	&-item {
+		display: grid;
+		grid-gap: 15px;
+		grid-template-columns: auto 1fr auto;
+
+		&::before {
+			content: '';
+			order: 2;
+			margin-bottom: 4px;
+			border-bottom: 1px dotted #C4C4C4;
+		}
+	}
+
+	&-name,
+	&-value {
+		font-size: 16px;
+		line-height: 21px
+	}
+
+	&-name {
+		order: 1;
+		font-weight: 700;
+	}
+
+	&-value {
+		order: 3;
+		font-weight: 500;
+	}
+
+	@media screen and (width <=1320px) {
+		padding-right: 0;
+	}
+}

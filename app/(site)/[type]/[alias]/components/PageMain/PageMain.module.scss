@@ -3,4 +3,23 @@
 	grid-template-columns: auto 1fr auto;
 	gap: 20px;
 	place-items: end left;
+
+	margin-bottom: 25px;
+
+	@media screen and (width <=640px) {
+		grid-template-columns: auto 1fr;
+		place-items: center left;
+	}
+}
+
+.amount {
+	@media screen and (width <=640px) {
+		margin-right: 0;
+	}
+}
+
+.sort {
+	@media screen and (width <=640px) {
+		grid-column: span 2;
+	}
 }

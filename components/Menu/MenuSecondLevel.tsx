@@ -46,7 +46,7 @@ export const MenuSecondLevel = ({ category, menu }: MenuSecondLevelProps): React
 		})}>
 			{menu.map((menuItem, index) => {
 				return (
-					<div key={menuItem._id.secondCategory}>
+					<div key={menuItem._id.secondCategory} className={styles['second-level-block-wrapper']}>
 						<div className={styles['second-level']} onClick={() => openSecondLevel(index)}>
 							{menuItem._id.secondCategory}
 						</div>

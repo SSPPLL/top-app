@@ -1,10 +1,10 @@
 'use client'
+import { Product, Sort, Tag, Title } from '@/components'
 import { FC, useReducer } from 'react'
 import { PageMainProps } from './types'
 import { SortEnum } from '@/components/Sort/types'
 import { sortReducer } from './sort.reducer'
 import styles from './PageMain.module.scss'
-import { Product, Sort, Tag, Title } from '@/components'
 
 export const PageMain: FC<PageMainProps> = ({ products, title }) => {
 	const [{ sort, products: sortedProducts }, dispatchSort] = useReducer(sortReducer, {
@@ -19,14 +19,15 @@ export const PageMain: FC<PageMainProps> = ({ products, title }) => {
 	return (
 		<>
 			<div className={styles.title}>
-				<Title as='h1' size='xl' >{title}</Title>
-				{products && <Tag as='span' color='grey' size='md'>{products.length}</Tag>}
-				<Sort sort={sort} setSort={setSort} />
+				<Title as='h1' size='xl'>{title}</Title>
+				{products && <Tag className={styles.amount} as='span' color='grey' size='md'>{products.length}</Tag>}
+				<Sort className={styles.sort} sort={sort} setSort={setSort} />
 			</div>
 			<div>
 				{sortedProducts && sortedProducts.map(p => (
 					<Product key={p._id} product={p} />
 				))}
-			</div></>
+			</div>
+		</>
 	)
 }

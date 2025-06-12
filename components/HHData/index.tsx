@@ -2,7 +2,7 @@ import { FC, ReactElement } from 'react'
 import styles from './HHData.module.scss'
 import cn from 'classnames'
 import { HHDataProps } from './types'
-import { Card } from '../Card/Card'
+import { Card } from '../Card'
 import RateIcon from './rate.svg'
 import { priceRuIntl } from '@/helpers/helpers'
 

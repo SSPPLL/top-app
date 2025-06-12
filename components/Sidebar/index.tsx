@@ -4,8 +4,8 @@ import cn from 'classnames'
 import { SidebarProps } from './types'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Search } from '../Search/Search'
-import { Menu } from '../Menu/Menu'
+import { Search } from '../Search'
+import { Menu } from '../Menu'
 
 export const Sidebar: FC<SidebarProps> = async ({
 	className,

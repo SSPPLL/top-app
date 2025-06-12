@@ -1,5 +1,4 @@
 'use client'
-
 import { firstLevelMenu, getFirstCategoryId } from '@/helpers/helpers';
 import { usePathname } from 'next/navigation';
 import { FC, ReactElement, useMemo } from 'react';

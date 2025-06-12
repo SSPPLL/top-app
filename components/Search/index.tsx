@@ -1,11 +1,11 @@
 'use client'
-import { FC, FormEvent, ReactElement, useCallback } from 'react'
+import { FC, FormEvent, ReactElement, useCallback, useRef } from 'react'
 import styles from './Search.module.scss'
 import cn from 'classnames'
 import { SearchProps } from './types'
 import SearchIcon from './search.svg'
-import { Input } from '../Input/Input'
-import { Button } from '../Button/Button'
+import { Input } from '../Input'
+import { Button } from '../Button'
 import { useRouter } from 'next/navigation'
 
 export const Search: FC<SearchProps> = ({
@@ -13,6 +13,7 @@ export const Search: FC<SearchProps> = ({
 	...props
 }): ReactElement => {
 	const router = useRouter();
+	const inputRef = useRef<HTMLInputElement>(null);
 
 	const onSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -21,8 +22,12 @@ export const Search: FC<SearchProps> = ({
 
 		if (typeof query !== 'string' || query.trim() === '') return;
 
-		router.push(`/search?q=${query}`);
+		if (inputRef.current) {
+			inputRef.current.value = '';
+			inputRef.current.blur();
+		}
 
+		router.push(`/search?q=${query}`);
 	}, [router]);
 
 	return (
@@ -33,6 +38,7 @@ export const Search: FC<SearchProps> = ({
 					placeholder='Поиск...'
 					name='query'
 					type='search'
+					ref={inputRef}
 				/>
 			</label>
 			<Button appearance='primary' className={styles.button}>

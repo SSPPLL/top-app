@@ -3,8 +3,8 @@ import styles from './Advantages.module.scss'
 import cn from 'classnames'
 import { AdvantagesProps } from './types'
 import CheckIcon from './check.svg'
-import { Paragraph } from '../Paragraph/Paragraph'
-import { Title } from '../Title/Title'
+import { Paragraph } from '../Paragraph'
+import { Title } from '../Title'
 
 export const Advantages: FC<AdvantagesProps> = ({
 	advantages,

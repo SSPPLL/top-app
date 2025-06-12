@@ -1,15 +1,15 @@
+import styles from './Page.module.scss';
 import { getMenu } from '@/api/menu';
 import { getPage } from '@/api/page';
 import { getProducts } from '@/api/products';
-import { Advantages, HHData, Tag, Title } from '@/components/ui';
 import { firstLevelMenu } from '@/helpers/helpers';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import styles from './Page.module.scss';
 import { ReactElement } from 'react';
 import { TopLevelCategory } from '@/interfaces/page.interface';
 import parse from 'html-react-parser';
 import { PageMain } from './components';
+import { Advantages, HHData, Tag, Title } from '@/components';
 
 interface PageParams {
 	alias: string,

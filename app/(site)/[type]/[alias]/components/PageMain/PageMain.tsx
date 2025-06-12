@@ -1,10 +1,10 @@
 'use client'
 import { FC, useReducer } from 'react'
 import { PageMainProps } from './types'
-import { Sort, Tag, Title } from '@/components/ui'
-import { SortEnum } from '@/components/ui/Sort/types'
+import { SortEnum } from '@/components/Sort/types'
 import { sortReducer } from './sort.reducer'
 import styles from './PageMain.module.scss'
+import { Sort, Tag, Title } from '@/components'
 
 export const PageMain: FC<PageMainProps> = ({ products, title }) => {
 	const [{ sort, products: sortedProducts }, dispatchSort] = useReducer(sortReducer, {

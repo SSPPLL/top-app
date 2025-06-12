@@ -2,9 +2,10 @@ import { FC, ReactElement } from 'react'
 import styles from './Sidebar.module.scss'
 import cn from 'classnames'
 import { SidebarProps } from './types'
-import { Menu } from '../Menu/Menu'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Search } from '../Search/Search'
+import { Menu } from '../Menu/Menu'
 
 export const Sidebar: FC<SidebarProps> = async ({
 	className,
@@ -15,7 +16,7 @@ export const Sidebar: FC<SidebarProps> = async ({
 			<Link className={styles.logo} href="/">
 				<Image src="/logo.svg" alt="" width={158} height={39} />
 			</Link>
-			<div>Поиск</div>
+			<Search className={styles.search} />
 			<Menu />
 		</aside>
 	)

@@ -1,6 +1,6 @@
+import styles from './Button.module.scss'
 import { ElementType, ReactElement } from 'react'
 import { ButtonProps, ButtonAllowedTags } from './types'
-import styles from './Button.module.scss'
 import cn from 'classnames'
 import ArrowIcon from './arrow.svg'
 

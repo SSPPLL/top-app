@@ -3,7 +3,7 @@ import cn from 'classnames'
 import Image from 'next/image'
 import styles from './Product.module.scss'
 import { ProductProps } from './types'
-import { FC, ReactElement, useRef, useState } from 'react'
+import { ReactElement, useRef, useState } from 'react'
 import { Card } from '../Card/Card'
 import { Title } from '../Title/Title'
 import { Rating } from '../Rating/Rating'
@@ -14,12 +14,13 @@ import { declineWordByNumber, priceRuIntl } from '@/helpers/helpers'
 import { Divider } from '../Divider/Divider'
 import { Reviews } from '../Reviews/Reviews'
 import { ReviewForm } from '../ReviewForm/ReviewForm'
+import { motion } from 'motion/react';
 
-export const Product: FC<ProductProps> = ({
+export const Product = motion.create(({
 	product,
 	className,
 	...props
-}): ReactElement => {
+}: ProductProps): ReactElement => {
 	const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
 	const reviewRef = useRef<HTMLDivElement>(null);
 
@@ -32,8 +33,8 @@ export const Product: FC<ProductProps> = ({
 	}
 
 	return (
-		<>
-			<Card {...props} className={cn(styles.product, className)}>
+		<div {...props} className={cn(styles.main, className)}>
+			<Card className={styles.product}>
 				<picture className={styles.logo}>
 					<Image className={styles.image} src={product.image} alt={product.title} width={70} height={70} />
 				</picture>
@@ -98,6 +99,6 @@ export const Product: FC<ProductProps> = ({
 				<Reviews reviews={product.reviews} />
 				<ReviewForm productId={product._id} />
 			</Card>
-		</>
+		</div>
 	)
-}
+})

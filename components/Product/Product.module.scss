@@ -235,6 +235,16 @@
 }
 
 .rating-title {
+	a {
+		border-bottom: 1px solid var(--grey);
+		transition: color .3s ease, border-color .3s ease;
+
+		&:hover {
+			border-bottom: 1px solid var(--primary);
+			color: var(--primary);
+		}
+	}
+
 	@media screen and (width <=1320px) {
 		grid-area: ratingTitle;
 	}

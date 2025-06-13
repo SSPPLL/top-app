@@ -3,7 +3,7 @@ import cn from 'classnames'
 import Image from 'next/image'
 import styles from './Product.module.scss'
 import { ProductProps } from './types'
-import { FC, ReactElement, useState } from 'react'
+import { FC, ReactElement, useRef, useState } from 'react'
 import { Card } from '../Card/Card'
 import { Title } from '../Title/Title'
 import { Rating } from '../Rating/Rating'
@@ -21,6 +21,16 @@ export const Product: FC<ProductProps> = ({
 	...props
 }): ReactElement => {
 	const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
+	const reviewRef = useRef<HTMLDivElement>(null);
+
+	const scrollToReview = () => {
+		setIsReviewOpened(true);
+		reviewRef.current?.scrollIntoView({
+			behavior: 'smooth',
+			block: 'start'
+		});
+	}
+
 	return (
 		<>
 			<Card {...props} className={cn(styles.product, className)}>
@@ -42,7 +52,9 @@ export const Product: FC<ProductProps> = ({
 				<div className={styles['price-title']}>цена</div>
 				<div className={styles['credit-title']}>кредит</div>
 				<div className={styles['rating-title']}>
-					{product.reviewCount} {declineWordByNumber(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
+					<a href='#ref' onClick={() => scrollToReview()}>
+						{product.reviewCount} {declineWordByNumber(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
+					</a>
 				</div>
 				<Divider className={styles.hr}></Divider>
 				<Paragraph className={styles.description} size='lg'>{product.description}</Paragraph>
@@ -82,7 +94,7 @@ export const Product: FC<ProductProps> = ({
 			<Card background='blue' className={cn(styles.reviews, {
 				[styles.opened]: isReviewOpened,
 				[styles.closed]: !isReviewOpened
-			})}>
+			})} ref={reviewRef}>
 				<Reviews reviews={product.reviews} />
 				<ReviewForm productId={product._id} />
 			</Card>

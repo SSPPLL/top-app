@@ -1,9 +1,16 @@
+.label {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
 .textarea {
 	box-sizing: border-box;
+	width: 100%;
 	height: 36px;
 	min-height: 76px;
 	padding: 7px 12px;
-	border: none;
+	border: 1px solid var(--white);
 	border-radius: 5px;
 
 	font-family: var(--font-family);
@@ -16,7 +23,13 @@
 	outline-color: var(--primary);
 	box-shadow: 0 4px 4px rgb(0 0 0 / 5%);
 
+	transition: border-color .3s ease;
+
 	&::placeholder {
 		color: var(--grey);
+	}
+
+	&.error {
+		border-color: var(--red)
 	}
 }

@@ -1,7 +1,7 @@
 .product {
 	display: grid;
 	grid-template-columns: [start] 70px [logoend] 30px [titlestart] calc(50% - 100px) [middle] 1fr [pricestart] auto [priceend] 40px [creditstart] auto [creditend] 40px [ratingstart] auto [end];
-	margin-bottom: 30px;
+	margin-top: 30px;
 	padding: 30px;
 
 	@media screen and (width <=1320px) {
@@ -351,5 +351,19 @@
 
 	@media screen and (width <=1320px) {
 		padding-right: 0;
+	}
+}
+
+.reviews {
+	overflow: hidden;
+	padding: 30px;
+
+	&.closed {
+		max-height: 0;
+		padding: 0 30px;
+	}
+
+	&.opened {
+		max-height: none;
 	}
 }

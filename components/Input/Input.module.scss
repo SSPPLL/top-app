@@ -1,8 +1,15 @@
+.label {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
 .input {
 	box-sizing: border-box;
+	width: 100%;
 	height: 36px;
 	padding: 0 12px;
-	border: none;
+	border: 1px solid var(--white);
 	border-radius: 5px;
 
 	font-family: var(--font-family);
@@ -15,6 +22,8 @@
 	outline-color: var(--primary);
 	box-shadow: 0 4px 4px rgb(0 0 0 / 5%);
 
+	transition: border-color .3s ease;
+
 	&::placeholder {
 		color: var(--grey);
 	}
@@ -24,5 +33,9 @@
 	&::-webkit-search-results-button,
 	&::-webkit-search-results-decoration {
 		display: none;
+	}
+
+	&.error {
+		border-color: var(--red)
 	}
 }

@@ -9,6 +9,8 @@
 
 	svg {
 		display: inline-block;
+		outline-color: var(--primary);
+		transition: fill .1s ease;
 	}
 
 	&:not(:last-child) {
@@ -18,4 +20,17 @@
 
 .editable {
 	cursor: pointer;
+}
+
+.defaults {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.error {
+	svg {
+		stroke: var(--red);
+		stroke-width: 1px;
+	}
 }

@@ -32,15 +32,15 @@ export const Search: FC<SearchProps> = ({
 
 	return (
 		<form {...props} className={cn(styles.search, className)} onSubmit={onSubmit}>
-			<label className={styles.label} >
-				<Input
-					className={styles.input}
-					placeholder='Поиск...'
-					name='query'
-					type='search'
-					ref={inputRef}
-				/>
-			</label>
+			<Input
+				className={styles.label}
+				inputClassName={styles.input}
+				placeholder='Поиск...'
+				name='query'
+				type='search'
+				ref={inputRef}
+				required
+			/>
 			<Button appearance='primary' className={styles.button}>
 				<SearchIcon />
 			</Button>

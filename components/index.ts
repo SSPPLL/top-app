@@ -1,4 +1,5 @@
 export { Button } from './Button/Button'
+export { FieldError } from './FieldError/FieldError'
 export { Card } from './Card/Card'
 export { Paragraph } from './Paragraph/Paragraph'
 export { Rating } from './Rating/Rating'
@@ -16,3 +17,5 @@ export { Search } from './Search/Search';
 export { Sidebar } from './Sidebar/Sidebar';
 export { Product } from './Product/Product';
 export { Divider } from './Divider/Divider';
+export { Reviews } from './Reviews/Reviews';
+export { ReviewForm } from './ReviewForm/ReviewForm';

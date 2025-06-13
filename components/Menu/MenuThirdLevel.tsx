@@ -4,20 +4,33 @@ import { FC, ReactElement, useContext } from 'react'
 import cn from 'classnames'
 import { MenuThirdLevelProps } from './types'
 import { MenuContext } from './context'
+import { motion } from 'motion/react';
 
-export const MenuThirdLevel: FC<MenuThirdLevelProps> = ({ pages, category, className }): ReactElement => {
+export const MenuThirdLevel: FC<MenuThirdLevelProps> = ({ pages, category }): ReactElement => {
 	const { pathname } = useContext(MenuContext);
+	const variants = {
+		visible: {
+			opacity: 1
+		},
+		hidden: {
+			opacity: 0
+		}
+	}
 	return (
-		<div className={cn(styles['third-level'], className)}>
-			<div className={styles['third-level-wrapper']}>
-				{pages.map(page => (
-					<Link key={page._id} href={`/${category}/${page.alias}`} className={cn(styles['third-level-item'], {
-						[styles['third-level-item-active']]: `/${category}/${page.alias}` === pathname
+		<>
+			{pages.map(page => (
+				<motion.div
+					key={page._id}
+					className={styles['third-level-item']}
+					variants={variants}
+				>
+					<Link href={`/${category}/${page.alias}`} className={cn(styles['third-level-link'], {
+						[styles['third-level-link-active']]: `/${category}/${page.alias}` === pathname
 					})}>
 						{page.category}
 					</Link>
-				))}
-			</div>
-		</div>
+				</motion.div>
+			))}
+		</>
 	)
 }

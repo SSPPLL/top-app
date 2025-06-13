@@ -28,18 +28,13 @@
 }
 
 .third-level {
-	cursor: pointer;
-
-	display: block;
-
-	font-size: 12px;
-	font-weight: 500;
-	color: var(--grey-dark);
-
 	&-item {
-		display: block;
-
+		margin-top: 10px;
 		margin-bottom: 10px;
+	}
+
+	&-link {
+		display: block;
 
 		font-size: 14px;
 		font-weight: 500;
@@ -48,32 +43,33 @@
 
 		transition: color .3s ease;
 
-		&:last-child {
-			margin-bottom: 0;
-		}
-
 		&-active,
 		&:hover {
 			color: var(--primary);
 		}
-	}
-
-	&-wrapper {
-		padding-top: 10px;
-		padding-bottom: 10px;
 	}
 }
 
 .second-level {
 	cursor: pointer;
 
+	padding: 0;
+	border: none;
+
+	font-family: var(--font-family);
 	font-size: 12px;
 	font-weight: 300;
 	line-height: 130%;
 	color: var(--grey-dark);
 	text-transform: uppercase;
 
+	appearance: none;
+	background: none;
 	outline-offset: -1px;
+
+	&-block {
+		overflow: hidden;
+	}
 
 	&-wrapper {
 		display: grid;
@@ -84,24 +80,11 @@
 		margin-left: 12px;
 		padding-left: 32px;
 		border-left: 1px solid #DFDFDF;
-
-		&:not(&-opened) {
-			display: none;
-		}
-	}
-
-	&-block {
-		overflow: hidden;
-		height: auto;
-
-		&:not(&-opened) {
-			height: 0;
-		}
 	}
 
 	&-block-wrapper:last-child {
-		.third-level-wrapper {
-			padding-bottom: 0;
+		.third-level-item:last-child {
+			margin-bottom: 0;
 		}
 	}
 }

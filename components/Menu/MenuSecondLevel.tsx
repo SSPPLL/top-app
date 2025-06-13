@@ -5,6 +5,7 @@ import cn from 'classnames';
 import { MenuThirdLevel } from './MenuThirdLevel';
 import { MenuSecondLevelProps } from './types';
 import { MenuContext } from './context';
+import { motion } from 'motion/react';
 
 export const MenuSecondLevel = ({ category, menu }: MenuSecondLevelProps): ReactElement => {
 	const [openedItems, setOpenedItems] = useState<number[]>([]);
@@ -12,6 +13,17 @@ export const MenuSecondLevel = ({ category, menu }: MenuSecondLevelProps): React
 	const secondLevelActiveId = useMemo(() => {
 		return menu.findIndex(m => m.pages.some(p => p.alias === alias));
 	}, [menu, alias]);
+	const variants = {
+		visible: {
+			transition: {
+				staggerChildren: 0.03
+			},
+			height: 'auto'
+		},
+		hidden: {
+			height: 0
+		}
+	}
 
 	useEffect(() => {
 		if (!alias || secondLevelActiveId === -1) {
@@ -47,12 +59,22 @@ export const MenuSecondLevel = ({ category, menu }: MenuSecondLevelProps): React
 			{menu.map((menuItem, index) => {
 				return (
 					<div key={menuItem._id.secondCategory} className={styles['second-level-block-wrapper']}>
-						<div className={styles['second-level']} onClick={() => openSecondLevel(index)}>
+						<button
+							aria-label='Открыть меню'
+							className={styles['second-level']}
+							onClick={() => openSecondLevel(index)}
+						>
 							{menuItem._id.secondCategory}
-						</div>
-						<MenuThirdLevel className={cn(styles['second-level-block'], {
-							[styles['second-level-block-opened']]: openedItems.includes(index) || secondLevelActiveId === index
-						})} pages={menuItem.pages} category={category} />
+						</button>
+						<motion.div
+							layout
+							variants={variants}
+							initial={secondLevelActiveId === index ? 'visible' : 'hidden'}
+							animate={openedItems.includes(index) || secondLevelActiveId === index ? 'visible' : 'hidden'}
+							className={cn(styles['second-level-block'])}
+						>
+							<MenuThirdLevel pages={menuItem.pages} category={category} />
+						</motion.div>
 					</div>
 				)
 			})}

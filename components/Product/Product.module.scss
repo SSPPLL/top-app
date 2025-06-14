@@ -377,6 +377,10 @@
 	margin-left: -30px;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
+
+	@media screen and (width <=1320px) {
+		grid-area: reviews;
+	}
 }
 
 .reviews {
@@ -384,8 +388,4 @@
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 	box-shadow: none;
-
-	@media screen and (width <=1320px) {
-		grid-area: reviews;
-	}
 }

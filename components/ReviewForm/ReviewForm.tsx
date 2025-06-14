@@ -11,6 +11,7 @@ import CrossIcon from './cross.svg'
 import { useForm, Controller } from 'react-hook-form'
 import { ReviewFormValues, ReviewSentResponse } from '@/interfaces/review.interface'
 import { sendReview } from '@/api/review'
+import { motion } from 'motion/react'
 
 export const ReviewForm: FC<ReviewFormProps> = ({
 	productId,
@@ -106,21 +107,37 @@ export const ReviewForm: FC<ReviewFormProps> = ({
 					</div>
 				</div>
 			</form>
-			{(isSuccess || isError) && <div className={cn(styles.panel, {
-				[styles.error]: isError
-			})}>
-				<div className={styles['panel-title']}>
-					{isError ? 'Произошла ошибка' : 'Ваш отзыв отправлен'}
-				</div>
-				<div className={styles['panel-description']}>
-					{
-						isError
-							? 'Что-то пошло не так, попробуйте обновить страницу'
-							: 'Спасибо, ваш отзыв будет опубликован после проверки.'
+			<motion.div
+				variants={{
+					visible: {
+						opacity: 1,
+						height: 'auto'
+					},
+					hidden: {
+						height: 0,
+						opacity: 0,
+						overflow: 'hidden'
 					}
+				}}
+				initial='hidden'
+				animate={(isSuccess || isError) ? 'visible' : 'hidden'}
+			>
+				<div className={cn(styles.panel, {
+					[styles.error]: isError
+				})}>
+					<div className={styles['panel-title']}>
+						{isError ? 'Произошла ошибка' : 'Ваш отзыв отправлен'}
+					</div>
+					<div className={styles['panel-description']}>
+						{
+							isError
+								? 'Что-то пошло не так, попробуйте обновить страницу'
+								: 'Спасибо, ваш отзыв будет опубликован после проверки.'
+						}
+					</div>
+					<CrossIcon className={styles.cross} onClick={() => isError ? setIsError(false) : setIsSuccess(false)} />
 				</div>
-				<CrossIcon className={styles.cross} onClick={() => isError ? setIsError(false) : setIsSuccess(false)} />
-			</div>}
+			</motion.div>
 		</>
 	)
 }

@@ -1,0 +1,45 @@
+.sidebar {
+	box-sizing: border-box;
+
+	&-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		align-items: start;
+
+		@media screen and (width <=900px) {
+			padding: 15px 20px 40px;
+		}
+	}
+
+	@media screen and (width <=900px) {
+		background: var(--background);
+		position: fixed;
+		z-index: 11;
+		width: 100%;
+		top: 0;
+		right: 0;
+		height: 100vh;
+		overflow-y: auto;
+
+		opacity: 0;
+		transform: translateX(100%);
+		transition: transform .3s ease, opacity .3s ease;
+
+		&.open {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+}
+
+.close {
+	position: absolute;
+	z-index: 3;
+	top: 15px;
+	right: 20px;
+
+	@media screen and (width >=901px) {
+		display: none;
+	}
+}

@@ -1,0 +1,11 @@
+.header {
+	grid-area: header;
+}
+
+.sidebar {
+	grid-area: sidebar;
+
+	@media screen and (width <=900px) {
+		grid-area: auto;
+	}
+}

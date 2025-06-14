@@ -11,27 +11,13 @@
 			"body"
 			"footer";
 		grid-template-columns: minmax(320px, 1fr);
-	}
-}
-
-.header {
-	grid-area: header;
-
-	@media screen and (width >=901px) {
-		display: none;
-	}
-}
-
-.sidebar {
-	grid-area: sidebar;
-
-	@media screen and (width <=900px) {
-		display: none !important;
+		gap: 30px;
 	}
 }
 
 .body {
 	grid-area: body;
+	padding-top: 7px;
 
 	@media screen and (width <=900px) {
 		padding: 0 20px;

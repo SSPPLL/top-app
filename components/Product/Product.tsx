@@ -3,7 +3,7 @@ import cn from 'classnames'
 import Image from 'next/image'
 import styles from './Product.module.scss'
 import { ProductProps } from './types'
-import { ReactElement, useEffect, useRef, useState } from 'react'
+import { MouseEvent, ReactElement, useEffect, useRef, useState } from 'react'
 import { Card } from '../Card/Card'
 import { Title } from '../Title/Title'
 import { Rating } from '../Rating/Rating'
@@ -36,6 +36,11 @@ export const Product = motion.create(({
 		});
 	}
 
+	const onReviewsCountClick = (event: MouseEvent) => {
+		event.preventDefault();
+		scrollToReview();
+	}
+
 	useEffect(() => {
 		controls.start(isReviewOpened ? 'visible' : 'hidden');
 	}, [controls, isReviewOpened]);
@@ -61,7 +66,7 @@ export const Product = motion.create(({
 				<div className={styles['price-title']}>цена</div>
 				<div className={styles['credit-title']}>кредит</div>
 				<div className={styles['rating-title']}>
-					<a href='#ref' onClick={() => scrollToReview()}>
+					<a href='#' onClick={onReviewsCountClick}>
 						{product.reviewCount} {declineWordByNumber(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
 					</a>
 				</div>

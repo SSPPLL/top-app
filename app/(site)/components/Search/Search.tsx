@@ -4,8 +4,6 @@ import styles from './Search.module.scss'
 import cn from 'classnames'
 import { SearchProps } from './types'
 import SearchIcon from './search.svg'
-import { Input } from '../Input/Input'
-import { Button } from '../Button/Button'
 import { useRouter } from 'next/navigation'
 
 export const Search: FC<SearchProps> = ({
@@ -32,18 +30,19 @@ export const Search: FC<SearchProps> = ({
 
 	return (
 		<form {...props} className={cn(styles.search, className)} onSubmit={onSubmit}>
-			<Input
-				className={styles.label}
-				inputClassName={styles.input}
-				placeholder='Поиск...'
-				name='query'
-				type='search'
-				ref={inputRef}
-				required
-			/>
-			<Button appearance='primary' className={styles.button}>
+			<label className={styles.label}>
+				<input
+					className={styles.input}
+					placeholder='Поиск...'
+					name='query'
+					type='search'
+					ref={inputRef}
+					required
+				/>
+			</label>
+			<button className={styles.button}>
 				<SearchIcon />
-			</Button>
+			</button>
 		</form>
 	)
 }

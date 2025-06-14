@@ -1,5 +1,4 @@
 export { Button } from './Button/Button'
-export { ButtonIcon } from './ButtonIcon/ButtonIcon'
 export { FieldError } from './FieldError/FieldError'
 export { Card } from './Card/Card'
 export { Paragraph } from './Paragraph/Paragraph'
@@ -10,14 +9,8 @@ export { HHData } from './HHData/HHData'
 export { Advantages } from './Advantages/Advantages'
 export { Sort } from './Sort/Sort'
 export { Input } from './Input/Input'
-export { Textarea } from './Textarea/Textarea';
-export { Header } from './Header/Header';
-export { Footer } from './Footer/Footer';
-export { Menu } from './Menu/Menu';
-export { Search } from './Search/Search';
-export { Sidebar } from './Sidebar/Sidebar';
-export { Product } from './Product/Product';
-export { Divider } from './Divider/Divider';
-export { Reviews } from './Reviews/Reviews';
-export { ReviewForm } from './ReviewForm/ReviewForm';
-export { Up } from './Up/Up';
+export { Textarea } from './Textarea/Textarea'
+export { Product } from './Product/Product'
+export { Divider } from './Divider/Divider'
+export { Reviews } from './Reviews/Reviews'
+export { ReviewForm } from './ReviewForm/ReviewForm'

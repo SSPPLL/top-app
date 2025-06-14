@@ -1,13 +1,13 @@
 import "@/app/reset.scss";
 import "@/app/globals.scss";
-import { Header } from '@/components/Header/Header';
-import { Sidebar } from '@/components/Sidebar/Sidebar';
-import { Footer } from '@/components/Footer/Footer';
 import styles from "./Layout.module.scss";
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import { ReactElement } from 'react';
-import { Up } from '@/components';
+import { firstLevelMenu } from '@/helpers/helpers';
+import { getMenu } from '@/api/menu';
+import { MenuItem } from '@/interfaces/menu.interface';
+import { Footer, MobileWrapper, Up } from './components';
 
 const notoSansKr = Noto_Sans_KR({
 	variable: "--font-family",
@@ -25,12 +25,18 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>): Promise<ReactElement> {
+	const menuArray: MenuItem[][] = [];
+
+	for (const menu of firstLevelMenu) {
+		const data = await getMenu(menu.id);
+		menuArray.push(data || []);
+	}
+
 	return (
 		<html lang="ru">
 			<body className={`${notoSansKr.variable}`}>
 				<div className={styles.wrapper}>
-					<Header className={styles.header} />
-					<Sidebar className={styles.sidebar} />
+					<MobileWrapper menus={menuArray} />
 					<div className={styles.body}>
 						{children}
 					</div>

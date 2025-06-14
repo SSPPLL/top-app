@@ -9,7 +9,7 @@ import styles from './Menu.module.scss'
 import cn from 'classnames'
 import { MenuContext } from './context';
 
-export const MenuFirstLevel: FC<MenuFirstLevelProps> = ({
+export const Menu: FC<MenuFirstLevelProps> = ({
 	className,
 	menus,
 	...props

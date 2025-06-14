@@ -13,17 +13,6 @@ export const MenuSecondLevel = ({ category, menu }: MenuSecondLevelProps): React
 	const secondLevelActiveId = useMemo(() => {
 		return menu.findIndex(m => m.pages.some(p => p.alias === alias));
 	}, [menu, alias]);
-	const variants = {
-		visible: {
-			transition: {
-				staggerChildren: 0.03
-			},
-			height: 'auto'
-		},
-		hidden: {
-			height: 0
-		}
-	}
 
 	useEffect(() => {
 		if (!alias || secondLevelActiveId === -1) {
@@ -53,12 +42,37 @@ export const MenuSecondLevel = ({ category, menu }: MenuSecondLevelProps): React
 	}
 
 	return (
-		<div className={cn(styles['second-level-wrapper'], {
-			[styles['second-level-wrapper-opened']]: category === type
-		})}>
+		<motion.div
+			className={cn(styles['second-level-wrapper'])}
+			layout
+			variants={{
+				visible: {
+					transition: {
+						staggerChildren: 0.03
+					},
+					height: 'auto'
+				},
+				hidden: {
+					height: 0
+				}
+			}}
+			initial={category === type ? 'visible' : 'hidden'}
+			animate={category === type ? 'visible' : 'hidden'}
+		>
 			{menu.map((menuItem, index) => {
 				return (
-					<div key={menuItem._id.secondCategory} className={styles['second-level-block-wrapper']}>
+					<motion.div
+						key={menuItem._id.secondCategory}
+						className={styles['second-level-block-wrapper']}
+						variants={{
+							visible: {
+								opacity: 1
+							},
+							hidden: {
+								opacity: 0
+							}
+						}}
+					>
 						<button
 							aria-label='Открыть меню'
 							className={styles['second-level']}
@@ -68,16 +82,26 @@ export const MenuSecondLevel = ({ category, menu }: MenuSecondLevelProps): React
 						</button>
 						<motion.div
 							layout
-							variants={variants}
+							variants={{
+								visible: {
+									transition: {
+										staggerChildren: 0.03
+									},
+									height: 'auto'
+								},
+								hidden: {
+									height: 0
+								}
+							}}
 							initial={secondLevelActiveId === index ? 'visible' : 'hidden'}
 							animate={openedItems.includes(index) || secondLevelActiveId === index ? 'visible' : 'hidden'}
 							className={cn(styles['second-level-block'])}
 						>
 							<MenuThirdLevel pages={menuItem.pages} category={category} />
 						</motion.div>
-					</div>
+					</motion.div>
 				)
 			})}
-		</div>
+		</motion.div>
 	)
 }

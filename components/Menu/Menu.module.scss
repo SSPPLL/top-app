@@ -72,14 +72,35 @@
 	}
 
 	&-wrapper {
+		position: relative;
+		z-index: 1;
+
+		overflow: hidden;
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 10px;
 
-		margin-top: 15px;
 		margin-left: 12px;
 		padding-left: 32px;
-		border-left: 1px solid #DFDFDF;
+
+		&::before {
+			content: '';
+
+			position: absolute;
+			z-index: -1;
+			top: 15px;
+			left: 0;
+
+			width: 1px;
+			height: calc(100% - 15px);
+
+			background: #DFDFDF;
+		}
+	}
+
+	&-block-wrapper:first-child {
+		padding-top: 15px;
+
 	}
 
 	&-block-wrapper:last-child {

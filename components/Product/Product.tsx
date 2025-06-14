@@ -3,7 +3,7 @@ import cn from 'classnames'
 import Image from 'next/image'
 import styles from './Product.module.scss'
 import { ProductProps } from './types'
-import { ReactElement, useRef, useState } from 'react'
+import { ReactElement, useEffect, useRef, useState } from 'react'
 import { Card } from '../Card/Card'
 import { Title } from '../Title/Title'
 import { Rating } from '../Rating/Rating'
@@ -14,23 +14,31 @@ import { declineWordByNumber, priceRuIntl } from '@/helpers/helpers'
 import { Divider } from '../Divider/Divider'
 import { Reviews } from '../Reviews/Reviews'
 import { ReviewForm } from '../ReviewForm/ReviewForm'
-import { motion } from 'motion/react';
+import { motion, useAnimation } from 'motion/react';
 
 export const Product = motion.create(({
 	product,
 	className,
 	...props
 }: ProductProps): ReactElement => {
-	const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
+	const [isReviewOpened, setIsReviewOpened] = useState<boolean>();
 	const reviewRef = useRef<HTMLDivElement>(null);
+	const controls = useAnimation();
 
-	const scrollToReview = () => {
+	const scrollToReview = async () => {
+		await controls.start('visible');
+
 		setIsReviewOpened(true);
+
 		reviewRef.current?.scrollIntoView({
 			behavior: 'smooth',
 			block: 'start'
 		});
 	}
+
+	useEffect(() => {
+		controls.start(isReviewOpened ? 'visible' : 'hidden');
+	}, [controls, isReviewOpened]);
 
 	return (
 		<div {...props} className={cn(styles.main, className)}>
@@ -93,6 +101,7 @@ export const Product = motion.create(({
 				</div>
 				<motion.div
 					className={styles['reviews-wrapper']}
+					animate={controls}
 					variants={{
 						visible: {
 							height: 'auto'
@@ -102,7 +111,6 @@ export const Product = motion.create(({
 						}
 					}}
 					initial='hidden'
-					animate={isReviewOpened ? 'visible' : 'hidden'}
 				>
 					<Card background='blue' className={styles.reviews} ref={reviewRef}>
 						<Reviews reviews={product.reviews} />

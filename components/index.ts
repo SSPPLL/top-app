@@ -1,4 +1,5 @@
 export { Button } from './Button/Button'
+export { ButtonIcon } from './ButtonIcon/ButtonIcon'
 export { FieldError } from './FieldError/FieldError'
 export { Card } from './Card/Card'
 export { Paragraph } from './Paragraph/Paragraph'

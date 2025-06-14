@@ -6,6 +6,7 @@ export const useScrollY = () => {
 	const handleScroll = () => setScrollY(window.scrollY);
 
 	useEffect(() => {
+		setScrollY(window.scrollY)
 		window.addEventListener('scroll', handleScroll, { passive: true });
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);

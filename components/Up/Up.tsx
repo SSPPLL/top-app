@@ -1,15 +1,17 @@
 'use client'
 import { FC, ReactElement } from 'react'
 import styles from './Up.module.scss'
-import ArrowIcon from './arrow.svg'
 import { useScrollY } from '@/hooks/useScrollY'
 import { motion } from 'motion/react';
+import { ButtonIcon } from '../ButtonIcon/ButtonIcon'
+
+const ButtonComponent = motion.create(ButtonIcon);
 
 export const Up: FC = (): ReactElement => {
 	const y = useScrollY();
 
 	return (
-		<motion.button
+		<ButtonComponent
 			variants={{
 				visible: {
 					opacity: 1
@@ -22,8 +24,8 @@ export const Up: FC = (): ReactElement => {
 			animate={y > 400 ? 'visible' : 'hidden'}
 			onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 			className={styles.up}
-		>
-			<ArrowIcon />
-		</motion.button>
+			appearance='primary'
+			icon='up'
+		/>
 	)
 }

@@ -19,3 +19,4 @@ export { Product } from './Product/Product';
 export { Divider } from './Divider/Divider';
 export { Reviews } from './Reviews/Reviews';
 export { ReviewForm } from './ReviewForm/ReviewForm';
+export { Up } from './Up/Up';

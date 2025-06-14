@@ -91,13 +91,24 @@ export const Product = motion.create(({
 						Читать отзывы
 					</Button>
 				</div>
-			</Card>
-			<Card background='blue' className={cn(styles.reviews, {
-				[styles.opened]: isReviewOpened,
-				[styles.closed]: !isReviewOpened
-			})} ref={reviewRef}>
-				<Reviews reviews={product.reviews} />
-				<ReviewForm productId={product._id} />
+				<motion.div
+					className={styles['reviews-wrapper']}
+					variants={{
+						visible: {
+							height: 'auto'
+						},
+						hidden: {
+							height: 0
+						}
+					}}
+					initial='hidden'
+					animate={isReviewOpened ? 'visible' : 'hidden'}
+				>
+					<Card background='blue' className={styles.reviews} ref={reviewRef}>
+						<Reviews reviews={product.reviews} />
+						<ReviewForm productId={product._id} />
+					</Card>
+				</motion.div>
 			</Card>
 		</div>
 	)

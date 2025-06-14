@@ -7,6 +7,7 @@ import styles from "./Layout.module.scss";
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import { ReactElement } from 'react';
+import { Up } from '@/components';
 
 const notoSansKr = Noto_Sans_KR({
 	variable: "--font-family",
@@ -34,6 +35,7 @@ export default async function RootLayout({
 						{children}
 					</div>
 					<Footer className={styles.footer} />
+					<Up />
 				</div>
 			</body>
 		</html>

@@ -8,21 +8,20 @@ import { motion } from 'motion/react';
 
 export const MenuThirdLevel: FC<MenuThirdLevelProps> = ({ pages, category }): ReactElement => {
 	const { pathname } = useContext(MenuContext);
-	const variants = {
-		visible: {
-			opacity: 1
-		},
-		hidden: {
-			opacity: 0
-		}
-	}
 	return (
 		<>
 			{pages.map(page => (
 				<motion.div
 					key={page._id}
 					className={styles['third-level-item']}
-					variants={variants}
+					variants={{
+						visible: {
+							opacity: 1
+						},
+						hidden: {
+							opacity: 0
+						}
+					}}
 				>
 					<Link href={`/${category}/${page.alias}`} className={cn(styles['third-level-link'], {
 						[styles['third-level-link-active']]: `/${category}/${page.alias}` === pathname

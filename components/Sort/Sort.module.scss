@@ -10,6 +10,9 @@
 }
 
 .sort {
+	position: relative;
+	z-index: 1;
+
 	display: grid;
 	grid-template-columns: auto auto;
 	gap: 40px;

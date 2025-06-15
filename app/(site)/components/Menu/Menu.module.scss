@@ -8,13 +8,16 @@
 
 	font-size: 18px;
 	font-weight: 500;
-	line-height: 140%;
 	color: var(--grey-dark);
 
 	transition: color .3s ease;
 
 	svg {
 		transition: fill .3s ease;
+	}
+
+	&-wrapper {
+		line-height: 140%;
 	}
 
 	&-active,
@@ -31,6 +34,7 @@
 	&-item {
 		margin-top: 10px;
 		margin-bottom: 10px;
+		line-height: 135%;
 	}
 
 	&-link {
@@ -38,8 +42,9 @@
 
 		font-size: 14px;
 		font-weight: 500;
-		line-height: 135%;
 		color: var(--grey-dark);
+
+		outline-offset: -1px;
 
 		transition: color .3s ease;
 
@@ -52,6 +57,8 @@
 
 .second-level {
 	cursor: pointer;
+
+	display: block;
 
 	padding: 0;
 	border: none;
@@ -77,8 +84,11 @@
 
 		overflow: hidden;
 		display: grid;
+		display: flex;
 		grid-template-columns: 1fr;
+		flex-direction: column;
 		gap: 10px;
+		align-items: start;
 
 		margin-left: 12px;
 		padding-left: 32px;

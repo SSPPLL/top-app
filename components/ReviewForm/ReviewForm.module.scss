@@ -97,6 +97,11 @@
 	z-index: 2;
 	top: 20px;
 	right: 20px;
+
+	padding: 0;
+	border: none;
+
+	background: none;
 }
 
 .panel {
@@ -118,7 +123,7 @@
 	&.error {
 		background: var(--red-light);
 
-		.cross {
+		.cross svg {
 			fill: var(--red);
 		}
 	}

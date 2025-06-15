@@ -6,5 +6,7 @@ export const MenuContext = createContext<MenuContextProps>({
 	pathname: '',
 	firstCategory: null,
 	type: '',
-	alias: ''
+	alias: '',
+	announcement: undefined,
+	setAnnouncement: () => { }
 });

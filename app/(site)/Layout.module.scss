@@ -14,16 +14,3 @@
 		gap: 30px;
 	}
 }
-
-.body {
-	grid-area: body;
-	padding-top: 7px;
-
-	@media screen and (width <=900px) {
-		padding: 0 20px;
-	}
-}
-
-.footer {
-	grid-area: footer;
-}

@@ -21,7 +21,6 @@
 .primary {
 	color: var(--white);
 	background-color: var(--primary);
-	outline-color: var(--grey-light);
 
 	&:hover {
 		background-color: var(--primary-hover);
@@ -30,12 +29,8 @@
 
 .ghost {
 	border: 1px solid var(--grey-light);
-
 	color: var(--foreground);
-
 	background: none;
-	outline-color: var(--primary);
-
 	transition: border-color .3s ease;
 
 	&:hover {

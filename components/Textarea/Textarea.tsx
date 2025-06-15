@@ -17,7 +17,7 @@ export const Textarea: FC<TextareaProps> = ({
 			<textarea {...props} className={cn(styles.textarea, textareaClassName, {
 				[styles.error]: error
 			})} ref={ref}></textarea>
-			{error && <FieldError>{error.message}</FieldError>}
+			{error && <FieldError role='alert'>{error.message}</FieldError>}
 		</label>
 	)
 }

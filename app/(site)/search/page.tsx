@@ -11,8 +11,8 @@ export default async function SearchPage({ searchParams }: {
 	const { q } = await searchParams;
 
 	return (
-		<div>
+		<>
 			<Title as='h1' size='xl'>Результаты поиска по запросу: {q}</Title>
-		</div>
+		</>
 	)
 }

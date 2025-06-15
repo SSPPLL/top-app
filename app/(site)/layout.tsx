@@ -7,7 +7,7 @@ import { ReactElement } from 'react';
 import { firstLevelMenu } from '@/helpers/helpers';
 import { getMenu } from '@/api/menu';
 import { MenuItem } from '@/interfaces/menu.interface';
-import { Footer, MobileWrapper, Up } from './components';
+import { ContentBody } from './components';
 
 const notoSansKr = Noto_Sans_KR({
 	variable: "--font-family",
@@ -36,12 +36,7 @@ export default async function RootLayout({
 		<html lang="ru">
 			<body className={`${notoSansKr.variable}`}>
 				<div className={styles.wrapper}>
-					<MobileWrapper menus={menuArray} />
-					<div className={styles.body}>
-						{children}
-					</div>
-					<Footer className={styles.footer} />
-					<Up />
+					<ContentBody menus={menuArray}>{children}</ContentBody>
 				</div>
 			</body>
 		</html>

@@ -26,6 +26,7 @@ export const Sidebar: FC<SidebarProps> = (({
 					className={styles.close} icon="cross"
 					onClick={() => setIsOpen(false)}
 					appearance="white"
+					aria-label="Закрыть мобильное меню"
 				/>
 				<Search className={styles.search} />
 				<Menu className={styles.menu} menus={menus} />

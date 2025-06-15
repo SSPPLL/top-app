@@ -15,10 +15,11 @@ import { motion } from 'motion/react'
 
 export const ReviewForm: FC<ReviewFormProps> = ({
 	productId,
+	isOpened,
 	className,
 	...props
 }): ReactElement => {
-	const { register, control, handleSubmit, formState: { errors }, reset } = useForm<ReviewFormValues>();
+	const { register, control, handleSubmit, formState: { errors }, reset, clearErrors } = useForm<ReviewFormValues>();
 	const [isSuccess, setIsSuccess] = useState<boolean>(false);
 	const [isError, setIsError] = useState<boolean>(false);
 
@@ -53,6 +54,8 @@ export const ReviewForm: FC<ReviewFormProps> = ({
 					type='text'
 					placeholder='Имя'
 					error={errors.name}
+					tabIndex={isOpened ? 0 : -1}
+					aria-invalid={errors.name ? true : false}
 				/>
 				<Input
 					className={styles.title}
@@ -65,6 +68,8 @@ export const ReviewForm: FC<ReviewFormProps> = ({
 					type='text'
 					placeholder='Заголовок отзыва'
 					error={errors.title}
+					tabIndex={isOpened ? 0 : -1}
+					aria-invalid={errors.title ? true : false}
 				/>
 				<div className={styles.rate}>
 					<span className={styles['rating-title']}>Оценка:</span>
@@ -84,6 +89,8 @@ export const ReviewForm: FC<ReviewFormProps> = ({
 								className={styles.rating}
 								rating={field.value}
 								setRating={field.onChange}
+								tabIndex={isOpened ? 0 : -1}
+								aria-invalid={errors.rating ? true : false}
 							/>
 						)}
 					>
@@ -99,9 +106,20 @@ export const ReviewForm: FC<ReviewFormProps> = ({
 					})}
 					placeholder='Текст отзыва'
 					error={errors.description}
+					tabIndex={isOpened ? 0 : -1}
+					aria-label='Текст отзыва'
+					aria-invalid={errors.description ? true : false}
 				/>
 				<div className={styles.submit}>
-					<Button className={styles.button} type='submit' appearance='primary'>Отправить</Button>
+					<Button
+						className={styles.button}
+						type='submit'
+						appearance='primary'
+						tabIndex={isOpened ? 0 : -1}
+						onClick={() => clearErrors()}
+					>
+						Отправить
+					</Button>
 					<div className={styles.disclaimer}>
 						* Перед публикацией отзыв пройдет предварительную модерацию и проверку
 					</div>
@@ -124,7 +142,7 @@ export const ReviewForm: FC<ReviewFormProps> = ({
 			>
 				<div className={cn(styles.panel, {
 					[styles.error]: isError
-				})}>
+				})} role='alert'>
 					<div className={styles['panel-title']}>
 						{isError ? 'Произошла ошибка' : 'Ваш отзыв отправлен'}
 					</div>
@@ -135,7 +153,14 @@ export const ReviewForm: FC<ReviewFormProps> = ({
 								: 'Спасибо, ваш отзыв будет опубликован после проверки.'
 						}
 					</div>
-					<CrossIcon className={styles.cross} onClick={() => isError ? setIsError(false) : setIsSuccess(false)} />
+					<button
+						aria-label='Закрыть оповещение'
+						type='button'
+						className={styles.cross}
+						onClick={() => isError ? setIsError(false) : setIsSuccess(false)}
+					>
+						<CrossIcon />
+					</button>
 				</div>
 			</motion.div>
 		</>

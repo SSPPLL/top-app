@@ -1,5 +1,5 @@
 'use client'
-import { ReactElement, useState, KeyboardEvent, useEffect, FC } from 'react'
+import { ReactElement, useState, KeyboardEvent, useEffect, FC, useRef } from 'react'
 import { RatingProps } from './types'
 import styles from './Rating.module.scss'
 import cn from 'classnames'
@@ -12,12 +12,14 @@ export const Rating: FC<RatingProps> = ({
 	rating,
 	setRating,
 	className,
+	tabIndex,
 	...props
 }): ReactElement => {
-	const [currentRating, setCurrentRating] = useState<number>(rating);
+	const [currentRating, setCurrentRating] = useState<number>(typeof rating !== 'undefined' ? Math.round(rating) : 0);
+	const starsRef = useRef<(SVGElement | null)[]>([]);
 
 	useEffect(() => {
-		setCurrentRating(rating);
+		setCurrentRating(typeof rating !== 'undefined' ? Math.round(rating) : 0);
 	}, [rating]);
 
 	const changeDisplay = (i: number) => {
@@ -36,18 +38,50 @@ export const Rating: FC<RatingProps> = ({
 		setRating(i)
 	}
 
-	const onKeyDown = (i: number) => {
+	const onKeyDown = (e: KeyboardEvent<SVGElement>) => {
 		if (!isEditable || !setRating) {
 			return;
 		}
 
-		return (e: KeyboardEvent<SVGElement>) => {
-			if (e.code !== 'Space') {
-				return;
+		if (e.code === 'ArrowRight' || e.code === 'ArrowUp') {
+			e.preventDefault();
+
+			if (!currentRating) {
+				setRating(1);
+			} else if (currentRating < 5) {
+				setRating(currentRating + 1);
 			}
 
-			setRating(i);
+			console.log(starsRef.current[currentRating]);
+
+			starsRef.current[currentRating]?.focus();
 		}
+
+		if (e.code === 'ArrowLeft' || e.code === 'ArrowDown') {
+			e.preventDefault();
+
+			if (currentRating > 1) {
+				setRating(currentRating - 1);
+
+				starsRef.current[currentRating - 2]?.focus();
+			}
+		}
+	}
+
+	const computeFocus = (current: number, index: number): number => {
+		if (!isEditable || !setRating) {
+			return -1;
+		}
+
+		if (!currentRating && index === 0) {
+			return tabIndex ?? 0;
+		}
+
+		if (currentRating === index + 1) {
+			return tabIndex ?? 0;
+		}
+
+		return -1
 	}
 
 	return (
@@ -64,12 +98,24 @@ export const Rating: FC<RatingProps> = ({
 						onMouseEnter={() => changeDisplay(i + 1)}
 						onMouseLeave={() => changeDisplay(rating)}
 						onClick={() => onClick(i + 1)}
-						key={i}>
-						<StarIcon tabIndex={isEditable ? 0 : -1} onKeyDown={onKeyDown(i + 1)} />
+						key={i}
+					>
+						<StarIcon
+							tabIndex={computeFocus(currentRating, i)}
+							onKeyDown={onKeyDown}
+							ref={r => {
+								starsRef.current?.push(r)
+							}}
+							role={isEditable ? 'slider' : undefined}
+							aria-valuenow={isEditable ? (currentRating ?? 0) : undefined}
+							aria-valuemax={isEditable ? 5 : undefined}
+							aria-valuemin={isEditable ? 1 : undefined}
+							aria-label={isEditable ? (currentRating ? `Рейтинг ${i + 1} из 5` : 'Установите рейтинг клавишами вверх или вниз') : undefined}
+						/>
 					</span>
 				))}
 			</div>
-			{error && <FieldError>{error.message}</FieldError>}
+			{error && <FieldError role='alert'>{error.message}</FieldError>}
 		</div>
 	)
 }

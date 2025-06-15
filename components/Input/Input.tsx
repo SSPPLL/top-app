@@ -16,7 +16,7 @@ export const Input: FC<InputProps> = ({
 			<input {...props} className={cn(styles.input, inputClassName, {
 				[styles.error]: error
 			})} ref={ref} />
-			{error && <FieldError>{error.message}</FieldError>}
+			{error && <FieldError role='alert'>{error.message}</FieldError>}
 		</label>
 	)
 }

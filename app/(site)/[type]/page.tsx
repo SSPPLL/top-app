@@ -53,8 +53,8 @@ export default async function FirstCategoryPage({ params }: {
 		notFound();
 	}
 	return (
-		<div>
+		<>
 			<h1>{awaitedParams.type}</h1>
-		</div>
+		</>
 	)
 }

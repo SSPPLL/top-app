@@ -29,7 +29,7 @@ export const Search: FC<SearchProps> = ({
 	}, [router]);
 
 	return (
-		<form {...props} className={cn(styles.search, className)} onSubmit={onSubmit}>
+		<form {...props} className={cn(styles.search, className)} onSubmit={onSubmit} role='search'>
 			<label className={styles.label}>
 				<input
 					className={styles.input}
@@ -40,7 +40,10 @@ export const Search: FC<SearchProps> = ({
 					required
 				/>
 			</label>
-			<button className={styles.button}>
+			<button
+				className={styles.button}
+				aria-label='Искать по сайту'
+			>
 				<SearchIcon />
 			</button>
 		</form>

@@ -5,4 +5,5 @@ export interface ReviewFormProps extends DetailedHTMLProps<
 	HTMLFormElement
 > {
 	productId: string;
+	isOpened: boolean
 };

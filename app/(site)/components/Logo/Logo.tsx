@@ -10,7 +10,7 @@ export const Logo: FC<LogoProps> = ({
 	...props
 }): ReactElement => {
 	return (
-		<Link {...props} className={cn(styles.anchor, className)} href="/">
+		<Link {...props} className={cn(styles.anchor, className)} href="/" aria-label='Перейти на главную'>
 			<Image src="/logo.svg" alt="" width={158} height={39} priority />
 		</Link>
 	)

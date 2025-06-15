@@ -26,6 +26,7 @@ export const Up: FC = (): ReactElement => {
 			className={styles.up}
 			appearance='primary'
 			icon='up'
+			aria-label='Пролистать страницу наверх'
 		/>
 	)
 }

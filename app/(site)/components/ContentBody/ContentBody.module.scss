@@ -1,0 +1,47 @@
+.body {
+	grid-area: body;
+	padding-top: 7px;
+	outline: none;
+
+	@media screen and (width <=900px) {
+		padding: 0 20px;
+	}
+}
+
+.footer {
+	grid-area: footer;
+}
+
+.header {
+	grid-area: header;
+}
+
+.sidebar {
+	grid-area: sidebar;
+
+	@media screen and (width <=900px) {
+		grid-area: auto;
+	}
+}
+
+.skip-link {
+	position: fixed;
+	z-index: 5;
+	top: 20px;
+	left: 20px;
+
+	overflow: hidden;
+	display: block;
+
+	height: 0;
+
+	color: var(--white);
+
+	background-color: var(--primary);
+
+	transition: height .3s ease;
+
+	&-active {
+		height: auto;
+	}
+}

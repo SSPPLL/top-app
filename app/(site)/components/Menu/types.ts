@@ -12,6 +12,7 @@ export interface MenuSecondLevelProps extends DetailedHTMLProps<HTMLAttributes<H
 
 export interface MenuThirdLevelProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
 	pages: PageItem[],
+	isOpened: boolean
 	category: string
 }
 
@@ -20,5 +21,7 @@ export interface MenuContextProps {
 	pathname: string,
 	firstCategory: number | null,
 	type: string,
-	alias: string
+	alias: string,
+	announcement: 'closed' | 'opened' | undefined,
+	setAnnouncement: (announcement: 'closed' | 'opened' | undefined) => void
 }

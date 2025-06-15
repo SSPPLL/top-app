@@ -16,6 +16,7 @@ export const Header: FC<HeaderProps> = ({ className, ...props }): ReactElement =
 				onClick={() => setIsOpen(true)}
 				icon="hamburger"
 				appearance="white"
+				aria-label="Открыть мобильное меню меню"
 			/>
 		</header>
 	)

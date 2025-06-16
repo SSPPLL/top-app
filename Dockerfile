@@ -1,5 +1,5 @@
 FROM node:22-alpine
-LABEL org.opencontainers.image.source https://github.com/SSPPLL/top-app
+LABEL org.opencontainers.image.source=https://github.com/SSPPLL/top-app
 WORKDIR /app
 ADD package.json package.json
 ADD package-lock.json package-lock.json

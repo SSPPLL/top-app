@@ -4,7 +4,7 @@ ADD package.json package.json
 ADD package-lock.json package-lock.json
 RUN npm install
 ADD . .
-ENV NODE_ENV production
+ENV NODE_ENV=production
 RUN npm run build
 RUN npm prune --production
 CMD ["npm", "start"]

@@ -1,10 +1,5 @@
 import { getMenu } from '@/api/menu';
-import { Metadata } from 'next';
 import { ReactElement } from 'react';
-
-export const metadata: Metadata = {
-	title: "MyTop - Наш лучший топ"
-};
 
 export async function generateStaticParams(): Promise<{ alias: string }[]> {
 	const menu = await getMenu(0);

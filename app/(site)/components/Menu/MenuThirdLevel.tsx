@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link'
 import styles from './Menu.module.scss'
 import { FC, ReactElement, useContext } from 'react'

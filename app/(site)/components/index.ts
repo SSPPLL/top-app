@@ -7,3 +7,4 @@ export { Header } from "./Header/Header";
 export { Sidebar } from "./Sidebar/Sidebar";
 export { Footer } from "./Footer/Footer";
 export { Up } from "./Up/Up";
+export { YandexMetrika } from "./YandexMetrika/YandexMetrika";

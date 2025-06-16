@@ -10,6 +10,8 @@ import { TopLevelCategory } from '@/interfaces/page.interface';
 import parse from 'html-react-parser';
 import { PageMain } from './components';
 import { Advantages, HHData, Tag, Title } from '@/components';
+import { defaultMetadata } from '../../default-metadata';
+import { merge } from 'lodash';
 
 interface PageParams {
 	alias: string,
@@ -24,14 +26,21 @@ export const generateMetadata = async ({ params }: {
 
 	if (!page) {
 		return {
+			...defaultMetadata,
 			title: 'Not found'
 		}
 	}
 
-	return {
+	return merge({}, defaultMetadata, {
 		title: page.metaTitle,
-		description: page.metaDescription
-	}
+		description: page.metaDescription,
+		openGraph: {
+			title: page.metaTitle,
+			description: page.metaDescription,
+			url: `${process.env.NEXT_PUBLIC_DOMAIN}/${awaitedParams.type}/${awaitedParams.alias}`,
+			type: 'article',
+		}
+	} as Metadata)
 }
 
 export async function generateStaticParams(): Promise<PageParams[]> {

@@ -1,7 +1,7 @@
 import { API } from '@/api/model'
 import { MenuItem } from '@/interfaces/menu.interface'
 
-export async function getMenu(firstCategory: number): Promise<MenuItem[] | null> {
+export const getMenu = async (firstCategory: number): Promise<MenuItem[] | null> => {
 	const res = await fetch(API.topPage.find, {
 		method: 'POST',
 		headers: new Headers({ 'Content-Type': 'application/json' }),

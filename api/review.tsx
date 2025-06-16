@@ -1,7 +1,7 @@
 import { ReviewFormValues, ReviewSentResponse } from '@/interfaces/review.interface';
 import { API } from './model';
 
-export async function sendReview(productId: string, formData: ReviewFormValues): Promise<ReviewSentResponse | null> {
+export const sendReview = async (productId: string, formData: ReviewFormValues): Promise<ReviewSentResponse | null> => {
 	const res = await fetch(API.review.createDemo, {
 		method: 'POST',
 		body: JSON.stringify({
